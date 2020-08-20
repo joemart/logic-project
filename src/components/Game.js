@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import calculateWinner from '../helper.js'
+import {calculateWinner} from '../helper.js'
 import Board from "./Board"
 
 export default()=>{
@@ -13,9 +13,8 @@ export default()=>{
         const historyPoint = history.slice(0, stepNumber+1)
         // const current = historyPoint[stepNumber]
         const squares = [...historyPoint[stepNumber]]
-
+        console.log(squares[i])
         if(winner || squares[i]) return
-
         squares[i] = x0
         setHistory([...historyPoint, squares])
         setStepNumber(historyPoint.length)
@@ -23,6 +22,8 @@ export default()=>{
     }
 
     const jumpTo = (step) =>{
+        if(step === 0)
+        setHistory([Array(9).fill(null)])
         setStepNumber(step)
         setXIsNext(step % 2 === 0)
     }
