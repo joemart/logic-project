@@ -3,31 +3,26 @@ import './App.css';
 
 export default () => {
 
-const [arr, setArr] = useState([[]])
+const [arr, setArr] = useState(Array.from(Array(3), ()=> Array(3)))
 
 
 useEffect(()=>{
-  // let myArr = [1,2,3]
-  // setArr(a=> {
-  //   for(let i =0; i<3; i++){
-  //     a[i] = myArr[i]
-  // }})
-  // console.log(arr)
 
-
-  let doubleArr = 
+  const doubleArr = 
   [1,2,3,4,5,6,7,8,9]
 
-  // console.log(doubleArr.length/3)
-  setArr(a=>{
+  const double = a =>{
     let count = 0
-    for(let i=0; i<3; i++){
-      for(let j=0; j<3; j++){
+    for(let i=0; i<a.length; i++){
+      for(let j=0; j<a[i].length; j++){
         a[i][j] = doubleArr[count++]
       }
     }
-  })
-  // console.log(arr)
+    return a
+  }
+
+  setArr(a=>double(a))
+  console.log(arr)
 
 },[])
   
